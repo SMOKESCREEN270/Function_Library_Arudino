@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Arduino Functions Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: Arial, sans-serif;
+        }
+
+        th,
+        td {
+            border: 1px solid #444;
+            padding: 10px;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #2f6fa1;
+            color: white;
+            text-align: left;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 4px;
+            display: block;
+            white-space: pre-wrap;
+        }
+
+        h2 {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Arduino Functions and Library Functions Overview</h2>
+
+    <table>
+        <tr>
+            <th>Category</th>
+            <th>Function</th>
+            <th>Definition / Purpose</th>
+            <th>Syntax</th>
+            <th>Example Code</th>
+        </tr>
+
+        <!-- USER DEFINED FUNCTIONS -->
+        <tr>
+            <td rowspan="3"><b>User Defined Functions</b></td>
+            <td>General Function Structure</td>
+            <td>Custom functions created by the user to organize code and perform repeated tasks.</td>
+            <td><code>returnType functionName(parameters) {<br>  statements;<br>}</code></td>
+            <td><code>int add(int a, int b) {<br>  return a + b;<br>}</code></td>
+        </tr>
+        <tr>
+            <td>Void Function</td>
+            <td>Does not return a value; used to perform an action.</td>
+            <td><code>void functionName() { ... }</code></td>
+            <td><code>void blinkLED() {<br>  digitalWrite(13, HIGH);<br>  delay(500);<br>  digitalWrite(13, LOW);<br>  delay(500);<br>}</code>
+            </td>
+        </tr>
+        <tr>
+            <td>Function With Parameters</td>
+            <td>Allows passing values to functions for flexible control.</td>
+            <td><code>void func(int x, int y)</code></td>
+            <td><code>void blinkCustom(int pin, int d) {<br>  digitalWrite(pin, HIGH);<br>  delay(d);<br>  digitalWrite(pin, LOW);<br>  delay(d);<br>}</code>
+            </td>
+        </tr>
+
+        <!-- I/O FUNCTIONS -->
+        <tr>
+            <td rowspan="6"><b>I/O Functions</b></td>
+
+            <td>pinMode()</td>
+            <td>Configures a pin as INPUT, OUTPUT, or INPUT_PULLUP.</td>
+            <td><code>pinMode(pin, mode);</code></td>
+            <td><code>pinMode(13, OUTPUT);</code></td>
+        </tr>
+
+        <tr>
+            <td>digitalWrite()</td>
+            <td>Writes HIGH or LOW to a digital pin.</td>
+            <td><code>digitalWrite(pin, value);</code></td>
+            <td><code>digitalWrite(13, HIGH);</code></td>
+        </tr>
+
+        <tr>
+            <td>digitalRead()</td>
+            <td>Reads HIGH or LOW from a digital input pin.</td>
+            <td><code>digitalRead(pin);</code></td>
+            <td><code>int x = digitalRead(2);</code></td>
+        </tr>
+
+        <tr>
+            <td>analogRead()</td>
+            <td>Reads analog voltage from A0–A5 and returns 0–1023.</td>
+            <td><code>analogRead(pin);</code></td>
+            <td><code>int value = analogRead(A0);</code></td>
+        </tr>
+
+        <tr>
+            <td>analogWrite()</td>
+            <td>Writes PWM output (0–255) to pins 3,5,6,9,10,11.</td>
+            <td><code>analogWrite(pin, value);</code></td>
+            <td><code>analogWrite(9, 128);  // 50% brightness</code></td>
+        </tr>
+
+        <tr>
+            <td>analogReference()</td>
+            <td>Selects voltage reference for analog input.</td>
+            <td><code>analogReference(type);</code></td>
+            <td><code>analogReference(INTERNAL);</code></td>
+        </tr>
+
+        <!-- CHARACTER FUNCTIONS -->
+        <tr>
+            <td rowspan="8"><b>Character Functions</b></td>
+
+            <td>isAlpha()</td>
+            <td>Returns true if character is alphabetic (A–Z, a–z).</td>
+            <td><code>isAlpha(c);</code></td>
+            <td><code>if (isAlpha('A')) Serial.println("Alpha");</code></td>
+        </tr>
+
+        <tr>
+            <td>isAlphaNumeric()</td>
+            <td>Returns true if character is letter or digit.</td>
+            <td><code>isAlphaNumeric(c);</code></td>
+            <td><code>isAlphaNumeric('7');  // true</code></td>
+        </tr>
+
+        <tr>
+            <td>isDigit()</td>
+            <td>Checks if c is numerical digit (0–9).</td>
+            <td><code>isDigit(c);</code></td>
+            <td><code>isDigit('3');  // true</code></td>
+        </tr>
+
+        <tr>
+            <td>isHexadecimalDigit()</td>
+            <td>Checks if character is valid hex (0–9, A–F).</td>
+            <td><code>isHexadecimalDigit(c);</code></td>
+            <td><code>isHexadecimalDigit('F');</code></td>
+        </tr>
+
+        <tr>
+            <td>isSpace()</td>
+            <td>Returns true if character is a space.</td>
+            <td><code>isSpace(c);</code></td>
+            <td><code>isSpace(' ');</code></td>
+        </tr>
+
+        <tr>
+            <td>isWhitespace()</td>
+            <td>Returns true for whitespace (space, tab, newline).</td>
+            <td><code>isWhitespace(c);</code></td>
+            <td><code>isWhitespace('\n');</code></td>
+        </tr>
+
+        <tr>
+            <td>isUpperCase()</td>
+            <td>Checks if character is uppercase letter.</td>
+            <td><code>isUpperCase(c);</code></td>
+            <td><code>isUpperCase('A');</code></td>
+        </tr>
+
+        <tr>
+            <td>isLowerCase()</td>
+            <td>Checks if character is lowercase letter.</td>
+            <td><code>isLowerCase(c);</code></td>
+            <td><code>isLowerCase('b');</code></td>
+        </tr>
+
+        <!-- MATH FUNCTIONS -->
+        <tr>
+            <td rowspan="6"><b>Math Functions</b></td>
+
+            <td>abs()</td>
+            <td>Returns absolute value of number.</td>
+            <td><code>abs(x);</code></td>
+            <td><code>int y = abs(-10);</code></td>
+        </tr>
+
+        <tr>
+            <td>constrain()</td>
+            <td>Limits a value within a minimum and maximum range.</td>
+            <td><code>constrain(x, min, max);</code></td>
+            <td><code>value = constrain(value, 0, 255);</code></td>
+        </tr>
+
+        <tr>
+            <td>max()</td>
+            <td>Returns the larger of two values.</td>
+            <td><code>max(a, b);</code></td>
+            <td><code>int m = max(3, 9);</code></td>
+        </tr>
+
+        <tr>
+            <td>min()</td>
+            <td>Returns the smaller of two values.</td>
+            <td><code>min(a, b);</code></td>
+            <td><code>int m = min(3, 9);</code></td>
+        </tr>
+
+        <tr>
+            <td>pow()</td>
+            <td>Raises a number to a power.</td>
+            <td><code>pow(base, exponent);</code></td>
+            <td><code>float p = pow(2, 3);</code></td>
+        </tr>
+
+        <tr>
+            <td>sqrt()</td>
+            <td>Returns square root.</td>
+            <td><code>sqrt(x);</code></td>
+            <td><code>float r = sqrt(49);</code></td>
+        </tr>
+
+    </table>
+
+</body>
+
+</html>
